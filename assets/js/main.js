@@ -56,13 +56,13 @@ function radioButtonManual() {
 function extractNumericPart(id) {
     return id.replace('radio', '');
 }
-// Adiciona novos <img> a <div> para aparecer a imagem do poster no carousel
-function imgSlideBox(postersNowPlayingMovie) {
-    for (let i = 0; i < postersNowPlayingMovie.length; i++) {
+// Adiciona novos <img> a <div> para aparecer a imagem do cenario (poster) no carousel
+function imgSlideBox(backdropsNowPlayingMovie) {
+    for (let i = 0; i < backdropsNowPlayingMovie.length; i++) {
         var slideBox = slideBoxes[i]
         const img = document.createElement('img')
-        img.src = `${postersNowPlayingMovie[i]}`
-        img.alt = `Poster do filme de numero ${i}`
+        img.src = `${backdropsNowPlayingMovie[i]}`
+        img.alt = `Cenario do filme de numero ${i}`
         slideBox.appendChild(img)
     }
 }

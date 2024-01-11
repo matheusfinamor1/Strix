@@ -1,7 +1,7 @@
 section.slider {
     margin: 0 auto;
-    width: 100vw;
-    height: 400px;
+    max-width: 100%;
+    height: auto;
     padding: 0 !important;
     overflow: hidden; /* Deixa a barra de rolagem horizontal escondida */
 }
@@ -27,11 +27,10 @@ section.slider {
     height: 200px;
 }
 
-.nav-manual,
-.nav-auto {
+.nav-manual, .nav-auto {
     position: absolute;
     width: 100vw;
-    margin-top: 45%;
+    top: 22%;
     display: flex;
     justify-content: center;
 }

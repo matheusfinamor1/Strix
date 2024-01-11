@@ -18,7 +18,7 @@ async function fetchMovieList() {
 }
 
 // Busca lista de filmes atualmente no cinema;
-// Retorna a lista de IDs desses filmes para fetchImagesMovie();
+// Retorna a lista de IDs desses filmes para fetchBackdropMovie();
 async function fetchNowPlaying() {
     const url = `${MOVIE_BASE_URL}/now_playing?language=pt-US&page=1`
     let listIdMovie = []
@@ -37,16 +37,16 @@ async function fetchNowPlaying() {
         for (let i = 0; i < 3; i++) {
             listIdMovie.push(fetchingIdNowPlaying.results[i].id)
         }
-        return fetchPostersMovie(listIdMovie)
+        return fetchBackdropMovie(listIdMovie)
 
     } else {
         console.log("erro aos obter id");
         return []
     }
 }
-// Busca os Posters dos filmes no cinema atraves de seus IDs recebidos;
-async function fetchPostersMovie(listIdMovie) {
-    const postersPaths = []
+// Busca os Backdrops(cenarios) dos filmes no cinema atraves de seus IDs recebidos;
+async function fetchBackdropMovie(listIdMovie) {
+    const backdropsPaths = []
 
     for (const movieId of listIdMovie) {
         const url = `${MOVIE_BASE_URL}${movieId}/images`
@@ -57,15 +57,25 @@ async function fetchPostersMovie(listIdMovie) {
                 Authorization: API_KEY
             }
         };
-        const fetchingPostersMovie = await fetch(url, options)
-        const postersData = await fetchingPostersMovie.json()
+        const fetchingBackdropsMovie = await fetch(url, options)
+        const backdropsData = await fetchingBackdropsMovie.json()
 
-        if (postersData && postersData.posters && postersData.posters.length > 0) {
-            const posterPath = `https://image.tmdb.org/t/p/original${postersData.posters[0].file_path}`;
-            postersPaths.push(posterPath)
+        if (backdropsData && backdropsData.backdrops && backdropsData.backdrops.length > 0) {
+            let firstPTFound = false
+            for (let i = 0; i < backdropsData.backdrops.length; i++) {
+                if (backdropsData.backdrops[i].iso_639_1 === "pt" && !firstPTFound) {
+                    const backdropPath = `https://image.tmdb.org/t/p/original${backdropsData.backdrops[i].file_path}`;
+                    backdropsPaths.push(backdropPath)
+                    firstPTFound = true
+                }
+            }
+            if(!firstPTFound){
+                console.log("Nenhum elemento com iso_639_1 em pt encontrado!");
+            }
+
         } else {
             console.log("erro ao obter imagens");
         }
     }
-    return postersPaths
+    return backdropsPaths
 }
