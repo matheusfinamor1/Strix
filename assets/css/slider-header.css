@@ -1,3 +1,12 @@
+.title-site{
+    display: flex;
+    margin: 1rem 0 auto;
+    color: white;
+    opacity: 0.9;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
 section.slider {
     margin: 0 auto;
     max-width: 100%;
@@ -12,8 +21,16 @@ section.slider {
     display: flex;
 }
 
+.title-slider{
+    color: white;
+    font-size: 1.25rem;
+    margin: 0.25rem 1rem;
+    font-weight: 200;
+}
+
 .slider-content input {
     display: none;
+    
 }
 
 .slide-box {
@@ -24,16 +41,17 @@ section.slider {
 
 .slide-box img {
     width: 100vw;
-    height: 200px;
+    height: 70%;
+    border-radius: 1rem;
 }
 
 .nav-manual, .nav-auto {
-    position: absolute;
+    position: fixed;
+    top: 21rem;
     width: 100vw;
-    top: 22%;
     display: flex;
     justify-content: center;
-}
+ }
 
 .nav-manual .manual-btn,
 .nav-auto div {
@@ -79,4 +97,8 @@ input[type="radio"]:not(:checked)+label {
 
 #radio3:checked~.first {
     margin-left: -50%;
+}
+
+@media (min-width: 481px) and (max-width: 768){
+
 }
