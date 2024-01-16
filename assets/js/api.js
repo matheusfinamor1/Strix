@@ -79,3 +79,18 @@ async function fetchBackdropMovie(listIdMovie) {
     }
     return backdropsPaths
 }
+
+async function fetchPopularMovies(){
+    const url = `${MOVIE_BASE_URL}/popular`;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: API_KEY
+        }
+    };
+
+    const fetchingPopularMovies = await fetch(url, options)
+    return await fetchingPopularMovies.json();
+}

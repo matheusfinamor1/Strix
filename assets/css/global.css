@@ -13,5 +13,9 @@ body {
     align-items: center;
     background-color: black;
     color: blue;
+    overflow: hidden !important;
 }
 
+html{
+    padding-bottom: 1000px;
+}
