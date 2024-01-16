@@ -24,8 +24,8 @@ section .slider-popular-movie {
 }
 
 .slide-box-popular-movie img {
-    width: 50vw;
-    height: 100%;
+    width: 45vw;
+    height: 90%;
     border-radius: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;

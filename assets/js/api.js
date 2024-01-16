@@ -40,7 +40,7 @@ async function fetchNowPlaying() {
         return fetchBackdropMovie(listIdMovie)
 
     } else {
-        console.log("erro aos obter id");
+        console.log("erro aos obter id para os filmes atuais do cinema!");
         return []
     }
 }
@@ -70,19 +70,21 @@ async function fetchBackdropMovie(listIdMovie) {
                 }
             }
             if(!firstPTFound){
-                console.log("Nenhum elemento com iso_639_1 em pt encontrado!");
+                console.log("Nenhum elemento com iso_639_1 em pt encontrado para os cenarios!");
             }
 
         } else {
-            console.log("erro ao obter imagens");
+            console.log("erro ao obter imagens para os cenarios!");
         }
     }
     return backdropsPaths
 }
 
+// Busca lista de filmes populares;
+// Retorna a lista de IDs desses filmes para fetchPostersMovie();
 async function fetchPopularMovies(){
     const url = `${MOVIE_BASE_URL}/popular`;
-
+    let listIdPopularMovies = []
     const options = {
         method: 'GET',
         headers: {
@@ -92,5 +94,53 @@ async function fetchPopularMovies(){
     };
 
     const fetchingPopularMovies = await fetch(url, options)
-    return await fetchingPopularMovies.json();
+    const fetchingIdPopularMovies = await fetchingPopularMovies.json()
+
+    if (fetchingIdPopularMovies && fetchingIdPopularMovies.results) {
+
+        for (let i = 0; i < 5; i++) {
+            listIdPopularMovies.push(fetchingIdPopularMovies.results[i].id)
+        }
+        return fetchPostersMovie(listIdPopularMovies)
+
+    } else {
+        console.log("erro aos obter id dos filmes populares!");
+        return []
+    }
+}
+
+
+async function fetchPostersMovie(listIdPopularMovies) {
+    const postersPaths = []
+
+    for (const movieId of listIdPopularMovies) {
+        const url = `${MOVIE_BASE_URL}${movieId}/images`
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: API_KEY
+            }
+        };
+        const fetchingPostersMovie = await fetch(url, options)
+        const postersData = await fetchingPostersMovie.json()
+
+        if (postersData && postersData.posters && postersData.posters.length > 0) {
+            let firstPTFound = false
+            for (let i = 0; i < postersData.posters.length; i++) {
+                if (postersData.posters[i].iso_639_1 === "pt" && !firstPTFound) {
+                    const posterPath = `https://image.tmdb.org/t/p/original${postersData.posters[i].file_path}`;
+                    postersPaths.push(posterPath)
+                    firstPTFound = true
+                }
+            }
+            if(!firstPTFound){
+                console.log("Nenhum elemento com iso_639_1 em pt encontrado para os posters!");
+            }
+
+        } else {
+            console.log("erro ao obter imagens de posters");
+        }
+    }
+    return postersPaths
 }
