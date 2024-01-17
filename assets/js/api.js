@@ -2,26 +2,26 @@ const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOGU0NDhjOWFjODQ5NTM2MjA
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie/'
 
 // Busca a lista de filme - SEM USO;
-async function fetchMovieList() {
-    const url = `${MOVIE_BASE_URL}/changes?page=1`;
+// async function fetchMovieList() {
+//     const url = `${MOVIE_BASE_URL}/changes?page=1`;
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: API_KEY
-        }
-    };
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             accept: 'application/json',
+//             Authorization: API_KEY
+//         }
+//     };
 
-    const fetchingMovieList = await fetch(url, options)
-    return await fetchingMovieList.json()
-}
+//     const fetchingMovieList = await fetch(url, options)
+//     return await fetchingMovieList.json()
+// }
 
-// Busca lista de filmes atualmente no cinema;
-// Retorna a lista de IDs desses filmes para fetchBackdropMovie();
-async function fetchNowPlaying() {
+// Busca os IDs dos filmes atualmente no cinema;
+// Retorna a lista de IDs para fetchBackdropMovie();
+async function fetchIDNowPlayingMovies() {
     const url = `${MOVIE_BASE_URL}/now_playing?language=pt-US&page=1`
-    let listIdMovie = []
+    let listIdNowPlayingMovie = []
     const options = {
         method: 'GET',
         headers: {
@@ -35,54 +35,19 @@ async function fetchNowPlaying() {
     if (fetchingIdNowPlaying && fetchingIdNowPlaying.results) {
 
         for (let i = 0; i < 3; i++) {
-            listIdMovie.push(fetchingIdNowPlaying.results[i].id)
+            listIdNowPlayingMovie.push(fetchingIdNowPlaying.results[i].id)
         }
-        return fetchBackdropMovie(listIdMovie)
+        return fetchBackdropMovie(listIdNowPlayingMovie)
 
     } else {
-        console.log("erro aos obter id para os filmes atuais do cinema!");
+        console.log("erro ao obter id para os filmes atuais do cinema!");
         return []
     }
 }
-// Busca os Backdrops(cenarios) dos filmes no cinema atraves de seus IDs recebidos;
-async function fetchBackdropMovie(listIdMovie) {
-    const backdropsPaths = []
 
-    for (const movieId of listIdMovie) {
-        const url = `${MOVIE_BASE_URL}${movieId}/images`
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: API_KEY
-            }
-        };
-        const fetchingBackdropsMovie = await fetch(url, options)
-        const backdropsData = await fetchingBackdropsMovie.json()
-
-        if (backdropsData && backdropsData.backdrops && backdropsData.backdrops.length > 0) {
-            let firstPTFound = false
-            for (let i = 0; i < backdropsData.backdrops.length; i++) {
-                if (backdropsData.backdrops[i].iso_639_1 === "pt" && !firstPTFound) {
-                    const backdropPath = `https://image.tmdb.org/t/p/original${backdropsData.backdrops[i].file_path}`;
-                    backdropsPaths.push(backdropPath)
-                    firstPTFound = true
-                }
-            }
-            if(!firstPTFound){
-                console.log("Nenhum elemento com iso_639_1 em pt encontrado para os cenarios!");
-            }
-
-        } else {
-            console.log("erro ao obter imagens para os cenarios!");
-        }
-    }
-    return backdropsPaths
-}
-
-// Busca lista de filmes populares;
-// Retorna a lista de IDs desses filmes para fetchPostersMovie();
-async function fetchPopularMovies(){
+// Busca os IDs dos filmes populares;
+// Retorna a lista de IDs para fetchPostersMovie();
+async function fetchIDPopularMovies(){
     const url = `${MOVIE_BASE_URL}/popular`;
     let listIdPopularMovies = []
     const options = {
@@ -109,11 +74,38 @@ async function fetchPopularMovies(){
     }
 }
 
+// Busca os IDs dos filmes que estao por vir
+// Retorna a lista de IDs para fetchPostersMovie();
+async function fetchIDUpcomingMovies(){
+    const url = `${MOVIE_BASE_URL}/upcoming`
+    let listIdUpcomingMovies = []
 
-async function fetchPostersMovie(listIdPopularMovies) {
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: API_KEY
+        }
+    };
+    const fetchingUpcomingMovies = await fetch(url,options)
+    const fetchIdUpcomingMovies = await fetchingUpcomingMovies.json()
+
+    if(fetchIdUpcomingMovies && fetchIdUpcomingMovies.results){
+        for(let i = 0; i< 5; i++){
+            listIdUpcomingMovies.push(fetchIdUpcomingMovies.results[i].id)
+        }
+        return fetchPostersMovie(listIdUpcomingMovies)
+    }else{
+        console.log("erro aos obter id dos filmes que estão por vir!");
+        return []
+    }
+}
+
+// Busca os posters dos filmes atraves dos IDs recebidos
+async function fetchPostersMovie(listIdMovies) {
     const postersPaths = []
 
-    for (const movieId of listIdPopularMovies) {
+    for (const movieId of listIdMovies) {
         const url = `${MOVIE_BASE_URL}${movieId}/images`
         const options = {
             method: 'GET',
@@ -143,4 +135,40 @@ async function fetchPostersMovie(listIdPopularMovies) {
         }
     }
     return postersPaths
+}
+
+// Busca os Backdrops(cenarios) dos filmes atraves de seus IDs recebidos;
+async function fetchBackdropMovie(listIdMovies) {
+    const backdropsPaths = []
+
+    for (const movieId of listIdMovies) {
+        const url = `${MOVIE_BASE_URL}${movieId}/images`
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: API_KEY
+            }
+        };
+        const fetchingBackdropsMovie = await fetch(url, options)
+        const backdropsData = await fetchingBackdropsMovie.json()
+
+        if (backdropsData && backdropsData.backdrops && backdropsData.backdrops.length > 0) {
+            let firstPTFound = false
+            for (let i = 0; i < backdropsData.backdrops.length; i++) {
+                if (backdropsData.backdrops[i].iso_639_1 === "pt" && !firstPTFound) {
+                    const backdropPath = `https://image.tmdb.org/t/p/original${backdropsData.backdrops[i].file_path}`;
+                    backdropsPaths.push(backdropPath)
+                    firstPTFound = true
+                }
+            }
+            if(!firstPTFound){
+                console.log("Nenhum elemento com iso_639_1 em pt encontrado para os cenarios!");
+            }
+
+        } else {
+            console.log("erro ao obter imagens para os cenarios!");
+        }
+    }
+    return backdropsPaths
 }

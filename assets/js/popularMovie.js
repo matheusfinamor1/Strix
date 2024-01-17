@@ -13,9 +13,9 @@ function imgSlideBoxPopularMovies(postersPopularMovies){
 
 }
 
-
+// Manipula os dados assincronos obtidos da API
 (async function(){
-    const popularMoviesData = await fetchPopularMovies()
+    const popularMoviesData = await fetchIDPopularMovies()
     imgSlideBoxPopularMovies(popularMoviesData)
 })()
 

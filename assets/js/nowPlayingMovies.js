@@ -10,6 +10,7 @@ document.getElementById('radio1').checked = true
 setInterval(() => {
     nextImage()
 }, 5000)
+
 // Manipulação para ir para a proxima imagem do carousel, configurando o radiobutton correspondente a imagem
 function nextImage() {
     cont++
@@ -19,6 +20,7 @@ function nextImage() {
     isClickManual = false
     document.getElementById('radio' + cont).checked = true
 }
+
 /*
     Manipulação dos eventos de clique nos radio buttons;
     Configura um timeout para limitar o clique continuo;
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
 /*
     Configuração dos radio buttons;
     Remove o 'active' de todas as labels de radio button quando é realizado o clique
@@ -56,6 +59,7 @@ function radioButtonManual() {
 function extractNumericPart(id) {
     return id.replace('radio', '');
 }
+
 // Adiciona novos <img> a <div> para aparecer a imagem do cenario (poster) no carousel
 function imgSlideBox(backdropsNowPlayingMovie) {
     for (let i = 0; i < backdropsNowPlayingMovie.length; i++) {
@@ -66,9 +70,10 @@ function imgSlideBox(backdropsNowPlayingMovie) {
         slideBox.appendChild(img)
     }
 }
+
 // Manipula os dados assincronos obtidos da API
 (async function () {
-    const nowPlayingData = await fetchNowPlaying()
+    const nowPlayingData = await fetchIDNowPlayingMovies()
     imgSlideBox(nowPlayingData)
 })()
 
