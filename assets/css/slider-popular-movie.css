@@ -12,7 +12,7 @@ section .slider-popular-movie {
 
 .slider-popular-movie-content {
     max-width: 100vw;
-    height: 20vh;
+    height: 35vh;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
@@ -29,4 +29,83 @@ section .slider-popular-movie {
     border-radius: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 599px) and (max-width: 879px){
+    section .slider-popular-movie {
+        display: flex;
+        flex-direction: row;
+     }
+     .slider-popular-movie-content {
+        max-width: 100vw;
+        height: 40vh;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    
+    .slider-popular-movie-content::-webkit-scrollbar{
+        display: none;
+    }
+    
+    .slide-box-popular-movie img {
+        width: 35vw;
+        height: 90%;
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 880px) and (max-width: 1279px) {
+    section .slider-popular-movie {
+        display: flex;
+        flex-direction: row;
+     }
+     .slider-popular-movie-content {
+        max-width: 100vw;
+        height: 70vh;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .slider-popular-movie-content::-webkit-scrollbar{
+        display: none;
+    }
+    
+    .slide-box-popular-movie img {
+        width: 30vw;
+        height: 90%;
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    section .slider-popular-movie {
+        display: flex;
+        flex-direction: row;
+     }
+     .slider-popular-movie-content {
+        max-width: 100vw;
+        height: 70vh;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .slider-popular-movie-content::-webkit-scrollbar{
+        display: none;
+    }
+    
+    .slide-box-popular-movie img {
+        width: 20vw;
+        height: 90%;
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
 }
