@@ -48,7 +48,7 @@ section.slider {
 .nav-manual, .nav-auto {
     position: absolute;
     top: 85%;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
  }
@@ -130,7 +130,7 @@ input[type="radio"]:not(:checked)+label {
     .nav-manual, .nav-auto {
         position: absolute;
         top: 85%;
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: center;
      }
@@ -169,7 +169,7 @@ input[type="radio"]:not(:checked)+label {
     .nav-manual, .nav-auto {
         position: absolute;
         top: 85%;
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: center;
      }
@@ -208,7 +208,7 @@ input[type="radio"]:not(:checked)+label {
     .nav-manual, .nav-auto {
         position: absolute;
         top: 85%;
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: center;
      }
