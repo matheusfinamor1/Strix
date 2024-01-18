@@ -1,14 +1,18 @@
-const icon = document.querySelector('.icon');
-const search = document.querySelector('.search');
-const clear = document.querySelector('.delete');
-const input = document.querySelector('#inputSearch');
+const search = document.getElementById('imgSearch')
 
-icon.onclick = function(){
-    search.classList.toggle('ativo');
-}
+handlerSrcSearch();
 
-clear.onclick = function(){
-    search.classList.remove('ativo');
-    input.value = ''
+// Altera entre os icones de pesquisar/fechar ao clica-los no header
+function handlerSrcSearch() {
+    if (search) {
+        search.addEventListener('click', function () {
+            console.log("clicou");
+            if (search.src.match("search.svg")) {
+                search.src = "../assets/img/close.svg";
+            } else {
+                search.src = "../assets/img/search.svg";
+            }
+        });
+    }
 }
 
