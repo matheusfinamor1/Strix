@@ -22,13 +22,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;600;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/slider-header.css">
-    <link rel="stylesheet" href="assets/css/slider-popular-movie.css">
-    <link rel="stylesheet" href="assets/css/slider-upcoming.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/slider-nowPlaying-movies.css">
+    <link rel="stylesheet" href="assets/css/slider-popular-movies.css">
+    <link rel="stylesheet" href="assets/css/slider-upcoming-movies.css">
 </head>
 
 <body>
+    <div class="header">
+        <div class="search">
+            <div class="icon"></div>
+            <div class="input">
+                <input type="text" placeholder="Pesquise aqui..." id="inputSearch">
+                <span class="delete"></span>
+            </div>
+        </div>
+    </div>
+
     <p class="title-site">Strix</p>
+
     <section class="slider">
         <p class="title-slider-now-playing">Filmes agora no cinema</p>
 
@@ -100,6 +112,7 @@
     </section>
 
     <script src="assets/js/api.js"></script>
+    <script src="assets/js/header.js"></script>
     <script src="assets/js/popularMovie.js"></script>
     <script src="assets/js/upcomingMovies.js"></script>
     <script src="assets/js/nowPlayingMovies.js"></script>
