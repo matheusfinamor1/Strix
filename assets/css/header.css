@@ -26,3 +26,25 @@
     background-color: black;
     height: 28px;
 }
+
+.content-input {
+    width: 100%;
+    padding: 0px 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.content-input input{
+    width: 100%;
+    padding: 0.750rem;
+    padding-left: 7%;
+    background-color: #b5b5b552;
+    background-image: url('../img/search.svg');
+    background-size: 20px;
+    color: white;
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc; /* Adiciona uma borda de 1 pixel com a cor cinza claro */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    box-sizing: border-box; /* Garante que a largura e altura incluam as bordas e o preenchimento */
+}
