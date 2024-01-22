@@ -48,3 +48,8 @@
     border-radius: 5px; /* Adiciona bordas arredondadas */
     box-sizing: border-box; /* Garante que a largura e altura incluam as bordas e o preenchimento */
 }
+/* Remove a borda alaranjada que aparece ao dar o clique no input */
+.content-input input:focus{
+    outline: none;    
+}
+

@@ -1,5 +1,6 @@
 const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOGU0NDhjOWFjODQ5NTM2MjA0ZjViNTgyMjU0NjY3OCIsInN1YiI6IjY1OTQzMjFjYTU4OTAyNzExOTk3N2ZkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VyJ6swHmhFa0siWlfRYEnCPiMnm2QnEaicR_r8ZjrBw'
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie/'
+const MOVIE_SEARCH_BASE_URL = 'https://api.themoviedb.org/3/search/movie'
 
 // Busca a lista de filme - SEM USO;
 // async function fetchMovieList() {
@@ -171,4 +172,29 @@ async function fetchBackdropMovie(listIdMovies) {
         }
     }
     return backdropsPaths
+}
+
+// Busca os filmes atraves do input da barra de pesquisa
+async function searchMovie(searchInput){
+    const params = new URLSearchParams({
+        query: searchInput,
+        include_adult: false,
+        language: 'pt-BR',
+        page: 1
+    })
+    
+    const url = `${MOVIE_SEARCH_BASE_URL}?${params.toString()}`
+
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: API_KEY   
+        }
+    }
+
+    const fetchingMovie = await fetch(url,options)
+    const searchData = await fetchingMovie.json()
+
+    return searchData
 }

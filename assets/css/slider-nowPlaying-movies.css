@@ -1,6 +1,6 @@
 
 
-section.slider {
+section.slider-nowplaying {
     position: relative;
     margin: 0 auto;
     max-width: 100%;
@@ -93,7 +93,7 @@ input[type="radio"]:not(:checked)+label {
 }
 
 @media screen and (min-width: 599px) and (max-width: 879px){
-    section.slider {
+    section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
         max-width: 100%;
@@ -130,7 +130,7 @@ input[type="radio"]:not(:checked)+label {
 }
 
 @media screen and (min-width: 880px) and (max-width: 1279px){
-    section.slider {
+    section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
         max-width: 100%;
@@ -169,7 +169,7 @@ input[type="radio"]:not(:checked)+label {
 }
 
 @media screen and (min-width: 1280px){
-    section.slider {
+    section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
         max-width: 100%;
