@@ -2,6 +2,7 @@ const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOGU0NDhjOWFjODQ5NTM2MjA
 const MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie/'
 const MOVIE_SEARCH_BASE_URL = 'https://api.themoviedb.org/3/search/movie'
 
+
 // Busca a lista de filme - SEM USO;
 // async function fetchMovieList() {
 //     const url = `${MOVIE_BASE_URL}/changes?page=1`;
@@ -174,27 +175,40 @@ async function fetchBackdropMovie(listIdMovies) {
     return backdropsPaths
 }
 
-// Busca os filmes atraves do input da barra de pesquisa
-async function searchMovie(searchInput){
-    const params = new URLSearchParams({
-        query: searchInput,
-        include_adult: false,
-        language: 'pt-BR',
-        page: 1
-    })
-    
-    const url = `${MOVIE_SEARCH_BASE_URL}?${params.toString()}`
+// Busca os IDs dos filmes pesquisados
+// Retorna a lista de IDs para fetchPosterMovie();
+const movieApi = {
+    async searchMovie(searchInput) {
+        let listIdSearchMovies = []
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: API_KEY   
+        const params = new URLSearchParams({
+            query: searchInput,
+            include_adult: false,
+            language: 'pt-BR',
+            page: 1
+        });
+
+        const url = `${MOVIE_SEARCH_BASE_URL}?${params.toString()}`;
+
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: API_KEY   
+            }
+        };
+
+        const fetchingMovie = await fetch(url, options);
+        const searchData = await fetchingMovie.json();
+
+        if(searchData && searchData.results){
+            for(let i = 0; i< 5; i++){
+                listIdSearchMovies.push(searchData.results[i].id)
+            }
+            return fetchPostersMovie(listIdSearchMovies)
+        }else{
+            console.log("erro aos obter id dos filmes que estão por vir!");
+            return []
         }
     }
-
-    const fetchingMovie = await fetch(url,options)
-    const searchData = await fetchingMovie.json()
-
-    return searchData
 }
