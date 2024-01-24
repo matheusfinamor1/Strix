@@ -65,7 +65,7 @@ async function fetchIDPopularMovies(){
 
     if (fetchingIdPopularMovies && fetchingIdPopularMovies.results) {
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
             listIdPopularMovies.push(fetchingIdPopularMovies.results[i].id)
         }
         return fetchPostersMovie(listIdPopularMovies)
@@ -93,7 +93,7 @@ async function fetchIDUpcomingMovies(){
     const fetchIdUpcomingMovies = await fetchingUpcomingMovies.json()
 
     if(fetchIdUpcomingMovies && fetchIdUpcomingMovies.results){
-        for(let i = 0; i< 5; i++){
+        for(let i = 0; i< 10; i++){
             listIdUpcomingMovies.push(fetchIdUpcomingMovies.results[i].id)
         }
         return fetchPostersMovie(listIdUpcomingMovies)
