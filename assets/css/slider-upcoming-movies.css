@@ -46,16 +46,27 @@ section .slider-upcoming {
     display: flex;
     justify-content: space-between;
     width: 100vw;
+    cursor: pointer;
+}
+
+.slide-button:hover{
+    background: #444;
 }
 
 .slide-button#prev-slider{
-    margin-left: 0.5rem;
-    background: yellow;
+    margin-left: 0.750rem;
+    background: #b5b5b5;
+    color: white;
+    border-radius: 50%;
+    font-size: 2.2rem;
 }
 
 .slide-button#next-slider{
-    margin-right: 0.5rem;
-    background: pink;
+    margin-right: 0.750rem;
+    background: #b5b5b5;
+    color: white;
+    border-radius: 50%;
+    font-size: 2.2rem;
 }
 
 @media screen and (min-width: 599px) and (max-width: 879px){
