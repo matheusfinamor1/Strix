@@ -49,8 +49,14 @@ section .slider-upcoming {
     cursor: pointer;
 }
 
+.slide-button{
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
 .slide-button:hover{
     background: #444;
+    opacity: 1;
 }
 
 .slide-button#prev-slider{
