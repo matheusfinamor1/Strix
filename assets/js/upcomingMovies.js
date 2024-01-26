@@ -44,4 +44,3 @@ function imgSlideBoxUpcoming(postersUpcoming) {
     upcomingMoviesData = await fetchIDUpcomingMovies()
     imgSlideBoxUpcoming(upcomingMoviesData)
 })()
-// window.addEventListener("load", initSlider)
