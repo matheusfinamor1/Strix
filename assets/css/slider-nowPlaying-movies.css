@@ -1,5 +1,3 @@
-
-
 section.slider-nowplaying {
     position: relative;
     margin: 0 auto;
@@ -15,7 +13,7 @@ section.slider-nowplaying {
     overflow: hidden;
 }
 
-.title-slider-now-playing{
+.title-slider-now-playing {
     color: white;
     font-size: 1.25rem;
     margin: 0.25rem 1rem;
@@ -34,17 +32,19 @@ section.slider-nowplaying {
 .slide-box img {
     width: 100vw;
     height: 95%;
-    border-radius: 2rem;
+    border: 1rem;
+    border-radius: 1rem;
     padding: 0.5rem;
 }
 
-.nav-manual, .nav-auto {
+.nav-manual,
+.nav-auto {
     position: absolute;
     top: 85%;
     width: 100%;
     display: flex;
     justify-content: center;
- }
+}
 
 .nav-manual .manual-btn,
 .nav-auto div {
@@ -92,7 +92,7 @@ input[type="radio"]:not(:checked)+label {
     margin-left: -200%;
 }
 
-@media screen and (min-width: 599px) and (max-width: 879px){
+@media screen and (min-width: 599px) and (max-width: 879px) {
     section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
@@ -108,28 +108,51 @@ input[type="radio"]:not(:checked)+label {
         overflow: hidden;
     }
 
+    .title-slider-now-playing {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0.25rem 1.25rem;
+        font-weight: 200;
+    }
+
     .slide-box {
         width: 100%;
         transition: 1s;
     }
-    
+
     .slide-box img {
         width: 100vw;
         height: 95%;
-        border-radius: 2rem;
+        border: 1rem;
+        border-radius: 1rem;
         padding: 0.5rem;
     }
 
-    .nav-manual, .nav-auto {
+    .nav-manual,
+    .nav-auto {
         position: absolute;
         top: 85%;
         width: 100%;
         display: flex;
         justify-content: center;
-     }
+    }
+
+    .nav-manual .manual-btn,
+    .nav-auto div {
+        border: 1px solid #205ca1;
+        padding: 6px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .nav-manual .manual-btn:not(:last-child),
+    .nav-auto div:not(:last-child) {
+        margin-right: 15px;
+    }
 }
 
-@media screen and (min-width: 880px) and (max-width: 1279px){
+@media screen and (min-width: 880px) and (max-width: 1279px) {
     section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
@@ -145,35 +168,58 @@ input[type="radio"]:not(:checked)+label {
         overflow: hidden;
     }
 
+    .title-slider-now-playing {
+        color: white;
+        font-size: 1.75rem;
+        margin: 0.25rem 1.25rem;
+        font-weight: 200;
+    }
+
     .slide-box {
         width: 100%;
         transition: 1s;
     }
-    
+
     .slide-box img {
         box-sizing: border-box;
         width: 100vw;
         height: 95%;
-        border-radius: 3rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        border: 2rem;
+        border-radius: 2rem;
+        padding: 1rem;
     }
 
-    .nav-manual, .nav-auto {
+    .nav-manual,
+    .nav-auto {
         position: absolute;
         top: 85%;
         width: 100%;
         display: flex;
         justify-content: center;
-     }
+    }
+
+    .nav-manual .manual-btn,
+    .nav-auto div {
+        border: 1px solid #205ca1;
+        padding: 6px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .nav-manual .manual-btn:not(:last-child),
+    .nav-auto div:not(:last-child) {
+        margin-right: 20px;
+    }
+
 }
 
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1280px) {
     section.slider-nowplaying {
         position: relative;
         margin: 0 auto;
         max-width: 100%;
-        height: 95vh;
+        height: 90vh;
         padding: 0 !important;
     }
 
@@ -184,25 +230,47 @@ input[type="radio"]:not(:checked)+label {
         overflow: hidden;
     }
 
+    .title-slider-now-playing {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0.250rem 1.250rem;
+        font-weight: 200;
+    }
+
     .slide-box {
         width: 100%;
         transition: 1s;
     }
-    
+
     .slide-box img {
         box-sizing: border-box;
         width: 100vw;
         height: 95%;
+        border: 3rem;
         border-radius: 3rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding: 1.5rem;
     }
 
-    .nav-manual, .nav-auto {
+    .nav-manual,
+    .nav-auto {
         position: absolute;
-        top: 85%;
+        top: 84%;
         width: 100%;
         display: flex;
         justify-content: center;
-     }
+    }
+
+    .nav-manual .manual-btn,
+    .nav-auto div {
+        border: 1px solid #205ca1;
+        padding: 6px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .nav-manual .manual-btn:not(:last-child),
+    .nav-auto div:not(:last-child) {
+        margin-right: 20px;
+    }
 }
