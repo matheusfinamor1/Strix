@@ -14,7 +14,8 @@ section .slider-upcoming {
     position: relative;
     z-index: 1;
     max-width: 100vw;
-    height: 35vh;
+    height: 30vh;
+    padding: 0.25rem;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
@@ -25,16 +26,16 @@ section .slider-upcoming {
     display: none;
 }
 
+.slider-upcoming{
+    position: relative;
+}
+
 .slide-box-upcoming img {
     width: 45vw;
     height: 90%;
     border-radius: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-}
-
-.slider-upcoming{
-    position: relative;
 }
 
 .content-button-slider{
@@ -60,7 +61,7 @@ section .slider-upcoming {
 }
 
 .slide-button#prev-slider{
-    margin-left: 0.750rem;
+    margin-left: 0.75rem;
     background: #b5b5b5;
     color: white;
     border-radius: 50%;
@@ -68,7 +69,7 @@ section .slider-upcoming {
 }
 
 .slide-button#next-slider{
-    margin-right: 0.750rem;
+    margin-right: 0.75rem;
     background: #b5b5b5;
     color: white;
     border-radius: 50%;
@@ -76,21 +77,22 @@ section .slider-upcoming {
 }
 
 @media screen and (min-width: 599px) and (max-width: 879px){
-    section .slider-upcoming {
-        display: flex;
-        flex-direction: row;
-     }
+
+    .title-slider-upcoming {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0.5rem 1.25rem;
+        font-weight: 200;
+    }
+
      .slider-upcoming-content {
         max-width: 100vw;
         height: 40vh;
+        padding: 0.5rem;
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
-    }
-    
-    .slider-upcoming-content::-webkit-scrollbar{
-        display: none;
     }
     
     .slide-box-upcoming img {
@@ -103,20 +105,21 @@ section .slider-upcoming {
 }
 
 @media screen and (min-width: 880px) and (max-width: 1279px) {
-    section .slider-upcoming {
-        display: flex;
-        flex-direction: row;
-     }
+    
+    .title-slider-upcoming {
+        color: white;
+        font-size: 1.75rem;
+        margin: 0.5rem 1.25rem;
+        font-weight: 200;
+    }
+
      .slider-upcoming-content {
         max-width: 100vw;
-        height: 70vh;
+        height: 55vh;
+        padding: 0.5rem;
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
-    }
-    
-    .slider-upcoming-content::-webkit-scrollbar{
-        display: none;
     }
     
     .slide-box-upcoming img {
@@ -126,23 +129,40 @@ section .slider-upcoming {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
+    
+    .slide-button#prev-slider{
+        margin-left: 1rem;
+        background: #b5b5b5;
+        color: white;
+        border-radius: 80%;
+        font-size: 3rem;
+    }
+    
+    .slide-button#next-slider{
+        margin-right: 1rem;
+        background: #b5b5b5;
+        color: white;
+        border-radius: 80%;
+        font-size: 3rem;
+    }
 }
 
 @media screen and (min-width: 1280px) {
-    section .slider-upcoming {
-        display: flex;
-        flex-direction: row;
-     }
+
+    .title-slider-upcoming {
+        color: white;
+        font-size: 1.75rem;
+        margin: 0.5rem 1.5rem;
+        font-weight: 200;
+    }
+    
      .slider-upcoming-content {
         max-width: 100vw;
-        height: 70vh;
+        height: 60vh;
+        padding: 1rem;
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
-    }
-    
-    .slider-upcoming-content::-webkit-scrollbar{
-        display: none;
     }
     
     .slide-box-upcoming img {
@@ -151,5 +171,21 @@ section .slider-upcoming {
         border-radius: 1rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
+    }
+
+    .slide-button#prev-slider{
+        margin-left: 1.5rem;
+        background: #b5b5b5;
+        color: white;
+        border-radius: 85%;
+        font-size: 3.2rem;
+    }
+    
+    .slide-button#next-slider{
+        margin-right: 1.5rem;
+        background: #b5b5b5;
+        color: white;
+        border-radius: 85%;
+        font-size: 3.2rem;
     }
 }

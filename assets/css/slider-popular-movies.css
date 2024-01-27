@@ -61,7 +61,7 @@ section .slider-popular-movie {
 }
 
 .slide-button-popular-movies#prev-slider-popular-movies {
-    margin-left: 0.750rem;
+    margin-left: 0.75rem;
     background: #b5b5b5;
     color: white;
     border-radius: 50%;
@@ -69,7 +69,7 @@ section .slider-popular-movie {
 }
 
 .slide-button-popular-movies#next-slider-popular-movies {
-    margin-right: 0.750rem;
+    margin-right: 0.75rem;
     background: #b5b5b5;
     color: white;
     border-radius: 50%;
