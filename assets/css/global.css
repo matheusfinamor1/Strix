@@ -12,7 +12,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: black;
-    color: blue;
     overflow-y: auto;
     overflow-x: hidden !important;
 }
