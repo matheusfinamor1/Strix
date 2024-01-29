@@ -7,7 +7,6 @@
 # Índice 
 * [Descrição do projeto](#descrição-do-projeto)
 * [Status do projeto](#status-do-projeto)
-* [Funcionalidades e demonstração](#funcionalidades-e-demonstração)
 * [Contato](#contato)
 
 # Descrição do projeto
