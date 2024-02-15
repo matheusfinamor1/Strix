@@ -136,7 +136,7 @@ async function fetchPostersMovie(listIdMovies) {
             console.log("erro ao obter imagens de posters");
         }
     }
-    return postersPaths
+    return [postersPaths, listIdMovies]
 }
 
 // Busca os Backdrops(cenarios) dos filmes atraves de seus IDs recebidos;
