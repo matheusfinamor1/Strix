@@ -175,9 +175,10 @@ async function fetchBackdropMovie(listIdMovies) {
     return backdropsPaths
 }
 
-// Busca os IDs dos filmes pesquisados
-// Retorna a lista de IDs para fetchPosterMovie();
 const movieApi = {
+    // Busca os IDs dos filmes pesquisados
+    // Retorna a lista de IDs para fetchPosterMovie();
+
     async searchMovie(searchInput) {
         let listIdSearchMovies = []
 
@@ -208,6 +209,33 @@ const movieApi = {
             return fetchPostersMovie(listIdSearchMovies)
         }else{
             console.log("erro aos obter id dos filmes que estão por vir!");
+            return []
+        }
+    },
+
+    // Busca os detalhes do filme atraves de seu ID
+    async detailsMovie(id){
+        const params = new URLSearchParams({
+            language: 'pt-BR'
+        });
+
+        const url = `${MOVIE_BASE_URL}${id}?${params.toString()}`;
+
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: API_KEY   
+            }
+        };
+
+        const fetchingDetailsMovie = await fetch(url, options);
+        const detailsMovieData = await fetchingDetailsMovie.json();
+
+        if(detailsMovieData){
+            return detailsMovieData
+        }else{
+            console.log("erro ao obter detalhes do filme!");
             return []
         }
     }

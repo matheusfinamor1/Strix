@@ -1,10 +1,22 @@
-const idPopularMovieClicked = localStorage.getItem('idPopularMovieClicked')
-const idUpcomingMovieClicked = localStorage.getItem('idUpcomingMovieClicked')
+let idMovieClicked = 0
 
-// verifica qual variavel possui valor para se trabalhar
-if (idPopularMovieClicked === null){
-    console.log(idUpcomingMovieClicked);
+if(localStorage.getItem('idPopularMovieClicked') === null){
+    idMovieClicked = localStorage.getItem('idUpcomingMovieClicked')
 }else{
-    console.log(idPopularMovieClicked);
+    idMovieClicked = localStorage.getItem('idPopularMovieClicked')
 }
+
+loadDetails(idMovieClicked)
+
+async function loadDetails(idMovieClicked){
+    try{
+        const details = await movieApi.detailsMovie(idMovieClicked)
+        console.log(details);
+    }catch(error){
+        console.log('Erro ao obter detalhes do filme: ',error);
+    }
+}
+
 localStorage.clear()
+
+
