@@ -40,13 +40,14 @@ function imgSlideBoxPopularMovies(postersPopularMovies, idPopularMovies) {
     }
 }
 
+// Obtem o id do item clicado, persiste o dado no navegador e abre outra guia(detailsMovie) 
 function clickItemPopularMovie(event){
-    var id = event.target.id
-    localStorage.setItem('idPopularMovieClicked', `${id}`)
+    var idPopularMovieClicked = event.target.id
+    localStorage.setItem('idPopularMovieClicked', `${idPopularMovieClicked}`)
     window.location.href = '../detailsMovie.html'
 }
 
-// Manipula os dados assincronos obtidos da API
+// Manipula os dados assincronos obtidos da API (paths de imagens e lista de IDs)
 (async function () {
     const popularMoviesData = await fetchIDPopularMovies()
     imgSlideBoxPopularMovies(popularMoviesData[0], popularMoviesData[1])

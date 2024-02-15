@@ -29,18 +29,26 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 // Adiciona novos <img> a <span> para aparecer a imagem do poster no slider de files populares
-function imgSlideBoxUpcoming(postersUpcoming) {
+function imgSlideBoxUpcoming(postersUpcoming, idUpcomingMovies) {
     for (let i = 0; i < postersUpcoming.length; i++) {
         var slideBoxUpcoming = slideBoxesUpcoming[i]
         const imgPosterUpcoming = document.createElement('img')
         imgPosterUpcoming.src = `${postersUpcoming[i]}`
         imgPosterUpcoming.alt = `Poster do filme numero ${i}`
+        imgPosterUpcoming.id = `${idUpcomingMovies[i]}`
         slideBoxUpcoming.appendChild(imgPosterUpcoming)
     }
 }
 
-// Manipula os dados assincronos obtidos da API
+// Obtem o id do item clicado, persiste o dado no navegador e abre outra guia(detailsMovie) 
+function clickItemUpcomingMovie(event){
+    var idUpcomingMovieClicked = event.target.id
+    localStorage.setItem('idUpcomingMovieClicked', `${idUpcomingMovieClicked}`)
+    window.location.href = '../detailsMovie.html'
+}
+
+// Manipula os dados assincronos obtidos da API (paths de imagens e lista de IDs)
 (async function () {
     upcomingMoviesData = await fetchIDUpcomingMovies()
-    imgSlideBoxUpcoming(upcomingMoviesData)
+    imgSlideBoxUpcoming(upcomingMoviesData[0], upcomingMoviesData[1])
 })()
